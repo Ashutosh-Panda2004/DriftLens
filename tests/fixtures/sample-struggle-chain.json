@@ -1,0 +1,23 @@
+{
+  "turn_count": 3,
+  "total_turns": 6,
+  "duration_seconds": 127,
+  "friction_score": 3,
+  "initial_request": "Add login to AuthService.ts",
+  "final_committed_code": "return authService.loginUser(email, password)",
+  "rules_extracted": [
+    "Don't use fetch directly. Use authService",
+    "Import from @/services not ../services",
+    "Don't instantiate with new, it's a singleton"
+  ],
+  "chain": [
+    { "role": "developer", "content": "Add login to AuthService.ts", "timestamp": "2026-05-25T16:00:00Z", "files_modified": ["AuthService.ts"] },
+    { "role": "ai", "content": "Using fetch('/api/auth/login')", "timestamp": "2026-05-25T16:00:30Z", "files_modified": ["AuthService.ts"] },
+    { "role": "developer", "content": "Don't use fetch directly. Use authService", "timestamp": "2026-05-25T16:01:15Z", "files_modified": [] },
+    { "role": "ai", "content": "Using new AuthService() from ../services", "timestamp": "2026-05-25T16:01:45Z", "files_modified": ["AuthService.ts"] },
+    { "role": "developer", "content": "Import from @/services not ../services", "timestamp": "2026-05-25T16:02:10Z", "files_modified": [] },
+    { "role": "ai", "content": "Using new AuthService() from @/services", "timestamp": "2026-05-25T16:02:40Z", "files_modified": ["AuthService.ts"] },
+    { "role": "developer", "content": "Don't instantiate with new, it's a singleton", "timestamp": "2026-05-25T16:02:55Z", "files_modified": [] },
+    { "role": "ai", "content": "Using authService singleton from @/services", "timestamp": "2026-05-25T16:03:07Z", "files_modified": ["AuthService.ts"] }
+  ]
+}

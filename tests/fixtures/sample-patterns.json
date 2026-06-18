@@ -1,0 +1,51 @@
+[
+  {
+    "pattern_id": "p1a2b3c4-d5e6-f789-0abc-def123456789",
+    "name": "service-layer-enforcement",
+    "description": "AI calls fetch/axios directly in React components instead of using the service layer",
+    "occurrences": 8,
+    "confidence": 0.91,
+    "proposed_rule": "Never call fetch() or axios directly in React components. Always use the corresponding service from src/features/[feature]/services/ or @/services.",
+    "example_before": "const data = await fetch('/api/users')",
+    "example_after": "const data = await userService.getAll()",
+    "target_skills": ["developer"],
+    "target_formats": ["copilot", "claude", "cursor"],
+    "source_correction_ids": [
+      "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "d4e5f6a7-b8c9-0123-defa-234567890123"
+    ],
+    "first_seen": "2026-05-20T10:15:00Z",
+    "last_seen": "2026-05-30T15:20:00Z",
+    "status": "pending",
+    "pr_url": null,
+    "drift_score_impact": 0.08,
+    "avg_friction_score": null,
+    "total_prompt_turns_saved": null,
+    "constraint_block": null
+  },
+  {
+    "pattern_id": "q2b3c4d5-e6f7-8901-bcde-ef2345678901",
+    "name": "service-singleton-import",
+    "description": "AI imports services with new keyword instead of using singleton pattern",
+    "occurrences": 3,
+    "confidence": 0.83,
+    "proposed_rule": "Import services as singletons from @/services. Do not instantiate with new. Correct: import { userService } from '@/services'. Wrong: new UserService()",
+    "example_before": "const svc = new UserService()",
+    "example_after": "import { userService } from '@/services'",
+    "target_skills": ["developer"],
+    "target_formats": ["copilot", "claude", "cursor"],
+    "source_correction_ids": [
+      "e5f6a7b8-c9d0-1234-efab-345678901234"
+    ],
+    "first_seen": "2026-05-25T16:00:00Z",
+    "last_seen": "2026-05-25T16:03:00Z",
+    "status": "pending",
+    "pr_url": null,
+    "drift_score_impact": 0.05,
+    "avg_friction_score": 4.0,
+    "total_prompt_turns_saved": 4,
+    "constraint_block": "1. NEVER use fetch() or axios() directly\n2. ALWAYS use the service layer from @/services\n3. Import services as singletons (not with `new`)\n4. Use the path alias @/services not relative ../services"
+  }
+]
