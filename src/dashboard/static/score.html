@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DriftLens - Drift Score</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo"><span class="logo-icon">◎</span><span class="logo-text">DriftLens</span></div>
+    <ul class="nav-links">
+      <li><a href="/index.html">Overview</a></li>
+      <li><a href="/patterns.html">Patterns</a></li>
+      <li><a href="/heatmap.html">Heatmap</a></li>
+      <li><a href="/score.html" class="active">Drift Score</a></li>
+      <li><a href="/feedback.html">Feedback Loop</a></li>
+      <li><a href="/struggles.html">Struggle Chains</a></li>
+    </ul>
+    <div class="sidebar-footer">v0.1.0</div>
+  </nav>
+  <main class="content">
+    <header class="page-header">
+      <h1>Drift Score</h1>
+      <p class="subtitle">How well-aligned are your skill files with actual developer behaviour?</p>
+    </header>
+    <div class="glass score-gauge">
+      <div>
+        <div class="gauge-number">-</div>
+        <div class="gauge-label">Overall Drift Score</div>
+      </div>
+      <div style="color:var(--text-muted);font-size:13px;max-width:300px">
+        Score = merged patterns ÷ total patterns.<br/>
+        100% = all discovered patterns have been merged into skill files.
+      </div>
+    </div>
+    <div class="glass" style="padding:20px">
+      <h2 style="font-size:14px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px">Pattern Breakdown</h2>
+      <ul class="score-pattern-list" style="list-style:none"></ul>
+    </div>
+  </main>
+  <script src="/app.js"></script>
+  <script>initScore();</script>
+</body>
+</html>

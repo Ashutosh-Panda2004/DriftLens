@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DriftLens - Patterns</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo"><span class="logo-icon">◎</span><span class="logo-text">DriftLens</span></div>
+    <ul class="nav-links">
+      <li><a href="/index.html">Overview</a></li>
+      <li><a href="/patterns.html" class="active">Patterns</a></li>
+      <li><a href="/heatmap.html">Heatmap</a></li>
+      <li><a href="/score.html">Drift Score</a></li>
+      <li><a href="/feedback.html">Feedback Loop</a></li>
+      <li><a href="/struggles.html">Struggle Chains</a></li>
+    </ul>
+    <div class="sidebar-footer">v0.1.0</div>
+  </nav>
+  <main class="content">
+    <header class="page-header">
+      <h1>Pattern Explorer</h1>
+      <p class="subtitle">Recurring correction patterns discovered from your AI sessions</p>
+    </header>
+    <div class="pattern-grid"></div>
+  </main>
+  <script src="/app.js"></script>
+  <script>initPatterns();</script>
+</body>
+</html>

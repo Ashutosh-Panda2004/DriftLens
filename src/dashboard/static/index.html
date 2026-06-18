@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DriftLens - Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo">
+      <span class="logo-icon">◎</span>
+      <span class="logo-text">DriftLens</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Overview</a></li>
+      <li><a href="/patterns.html">Patterns</a></li>
+      <li><a href="/heatmap.html">Heatmap</a></li>
+      <li><a href="/score.html">Drift Score</a></li>
+      <li><a href="/feedback.html">Feedback Loop</a></li>
+      <li><a href="/struggles.html">Struggle Chains</a></li>
+    </ul>
+    <div class="sidebar-footer">v0.1.0</div>
+  </nav>
+
+  <main class="content">
+    <header class="page-header">
+      <h1>Overview</h1>
+      <p class="subtitle">Correction capture summary for this project</p>
+    </header>
+
+    <div class="stats-grid">
+      <div class="stat-card glass">
+        <div class="stat-label">Drift Score</div>
+        <div class="stat-value" id="drift-score">-</div>
+        <div class="stat-sub">higher is better</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-label">Total Corrections</div>
+        <div class="stat-value" id="total-corrections">-</div>
+        <div class="stat-sub" id="correction-breakdown">git delta / reprompt / chains</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-label">Patterns Discovered</div>
+        <div class="stat-value" id="pattern-count">-</div>
+        <div class="stat-sub">from your corrections</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-label">Struggle Chains</div>
+        <div class="stat-value" id="struggle-chains">-</div>
+        <div class="stat-sub" id="avg-friction">avg friction score</div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-card glass">
+        <h2>Corrections Over Time</h2>
+        <canvas id="corrections-chart"></canvas>
+      </div>
+      <div class="chart-card glass">
+        <h2>Agent Breakdown</h2>
+        <canvas id="agents-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="bottom-grid">
+      <div class="list-card glass">
+        <h2>Top Patterns</h2>
+        <ul id="top-patterns" class="pattern-list"></ul>
+      </div>
+      <div class="list-card glass">
+        <h2>Correction Types</h2>
+        <div id="type-breakdown" class="type-bars"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/app.js"></script>
+  <script>
+    initOverview();
+  </script>
+</body>
+</html>
