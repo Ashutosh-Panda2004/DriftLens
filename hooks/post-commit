@@ -1,0 +1,11 @@
+#!/bin/sh
+# DriftLens post-commit hook
+# Captures corrections from AI-assisted commits
+
+# Check if driftlens is installed
+if ! command -v driftlens >/dev/null 2>&1; then
+  exit 0
+fi
+
+# Run collection in background to not block the commit
+driftlens collect --hook &
