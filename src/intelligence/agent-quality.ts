@@ -131,6 +131,8 @@ export async function computeAgentQuality(opts: QualityOptions): Promise<AgentQu
       const best = agentScores[0];
       const runnerUp = agentScores[1];
 
+      if (!best || !runnerUp) continue;
+
       // NF-5: sample-size suppression. Recommendations are advisory only and
       // must not be made on thin evidence, where accuracy estimates are noise.
       const MIN_SAMPLE = 5;

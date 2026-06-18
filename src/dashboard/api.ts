@@ -112,7 +112,10 @@ export async function registerApiRoutes(fastify: FastifyInstance, cwd: string): 
     for (const c of corrections) {
       const week = getWeekKey(c.ts);
       if (!map[c.file]) map[c.file] = {};
-      map[c.file][week] = (map[c.file][week] ?? 0) + 1;
+      const weekMap = map[c.file];
+      if (weekMap) {
+        weekMap[week] = (weekMap[week] ?? 0) + 1;
+      }
     }
 
     return Object.entries(map).flatMap(([file, weeks]) =>
@@ -167,9 +170,12 @@ export async function registerApiRoutes(fastify: FastifyInstance, cwd: string): 
 
     for (const c of corrections) {
       if (!agentMap[c.agent]) agentMap[c.agent] = { count: 0, frictionSum: 0 };
-      agentMap[c.agent].count++;
-      if (c.struggle_chain) {
-        agentMap[c.agent].frictionSum += c.struggle_chain.friction_score;
+      const agent = agentMap[c.agent];
+      if (agent) {
+        agent.count++;
+        if (c.struggle_chain) {
+          agent.frictionSum += c.struggle_chain.friction_score;
+        }
       }
     }
 

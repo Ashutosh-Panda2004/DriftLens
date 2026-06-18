@@ -190,7 +190,8 @@ function groupByAgent(corrections: CorrectionRecord[]): Record<string, Correctio
   const groups: Record<string, CorrectionRecord[]> = {};
   for (const c of corrections) {
     if (!groups[c.agent]) groups[c.agent] = [];
-    groups[c.agent].push(c);
+    const group = groups[c.agent];
+    if (group) group.push(c);
   }
   return groups;
 }

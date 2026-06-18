@@ -94,15 +94,19 @@ export async function predictFailures(opts: PredictionOptions): Promise<FailureP
     // Group by developer_instruction or ai_wrote content
     const groups = groupByContent(unpatternedCorrections);
     for (const [, group] of Object.entries(groups)) {
-      if (group.length >= 2) {
-        predictedFailures.push({
-          pattern_id: 'unnamed-' + group[0].id,
-          pattern_name: 'Recurring file-specific correction',
-          probability: Math.min(0.5 + group.length * 0.1, 0.95),
-          constraint_to_inject: buildConstraintFromCorrections(group),
-          historical_correction_count: group.length,
-          last_occurred: group[group.length - 1].ts,
-        });
+      if (group && group.length >= 2) {
+        const first = group[0];
+        const last = group[group.length - 1];
+        if (first && last) {
+          predictedFailures.push({
+            pattern_id: 'unnamed-' + first.id,
+            pattern_name: 'Recurring file-specific correction',
+            probability: Math.min(0.5 + group.length * 0.1, 0.95),
+            constraint_to_inject: buildConstraintFromCorrections(group),
+            historical_correction_count: group.length,
+            last_occurred: last.ts,
+          });
+        }
       }
     }
   }
@@ -140,7 +144,7 @@ function buildConstraintFromCorrections(corrections: CorrectionRecord[]): string
 
   // Fall back to inferring from ai_wrote → human_committed diff
   const first = corrections[0];
-  if (first.ai_wrote && first.human_committed) {
+  if (first && first.ai_wrote && first.human_committed) {
     return `CONSTRAINT: Do not write "${first.ai_wrote.slice(0, 50)}..." - use "${first.human_committed.slice(0, 50)}..." instead.`;
   }
 

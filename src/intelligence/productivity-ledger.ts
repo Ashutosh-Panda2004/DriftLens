@@ -51,6 +51,7 @@ export async function computeProductivityLedger(opts: LedgerOptions): Promise<Pr
 
   for (const [key, group] of Object.entries(grouped)) {
     const [date, agent] = key.split('|');
+    if (!date || !agent) continue;
     const record = computeDailyRecord(group, date, agent, opts.config);
     records.push(record);
   }

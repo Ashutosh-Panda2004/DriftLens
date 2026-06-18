@@ -26,7 +26,7 @@ export async function parseClaudeSessions(claudeDir: string): Promise<ParsedSess
   const entries = await readdir(claudeDir, { recursive: true });
 
   for (const entry of entries) {
-    const entryStr = typeof entry === 'string' ? entry : entry.toString();
+    const entryStr: string = typeof entry === 'string' ? entry : String(entry);
     if (!entryStr.endsWith('.json') && !entryStr.endsWith('.jsonl')) continue;
 
     const fp = path.join(claudeDir, entryStr);

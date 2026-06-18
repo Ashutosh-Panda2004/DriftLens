@@ -155,6 +155,15 @@ async function handleGetRecommendation(
   }
 
   const best = categoryRecs[0];
+  if (!best) {
+    return {
+      content: [{
+        type: 'text',
+        text: `No agent recommendations available for ${file} in category ${category}.`,
+      }],
+    };
+  }
+
   return {
     content: [{
       type: 'text',

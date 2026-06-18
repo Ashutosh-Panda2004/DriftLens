@@ -2,6 +2,7 @@
 // Composite benchmark for engineering leadership
 
 import { existsSync } from 'fs';
+import { readFile } from 'fs/promises';
 import path from 'path';
 import { readJsonl, readJsonFile } from '../shared/io.js';
 import { CORRECTIONS_FILE, PATTERNS_FILE } from '../shared/constants.js';
@@ -156,7 +157,7 @@ async function computeRuleFreshness(cwd: string, targets: SkillTarget[]): Promis
     if (!existsSync(filePath)) continue;
 
     const content = await readFile(filePath, 'utf8');
-    const lines = content.split('\n').filter((l) => l.trim().startsWith('-') || l.trim().startsWith('*'));
+    const lines = content.split('\n').filter((l: string) => l.trim().startsWith('-') || l.trim().startsWith('*'));
     totalRules += lines.length;
 
     // Check git last-modified for the file (simplified: use file mtime)

@@ -119,6 +119,13 @@ function extractIndividualReprompts(
       session_log_source: session.source,
       agent: session.agent as CorrectionRecord['agent'],
       model_used: 'unknown',
+      generation_timestamp: null,
+      time_to_commit_ms: null,
+      estimated_manual_time_ms: 30000,
+      model_version: null,
+      agent_session_tokens: null,
+      pattern_categories: [],
+      module_category: 'unknown',
     };
 
     corrections.push(record);

@@ -159,7 +159,8 @@ function parseMarkdownSections(content: string): Array<{ title: string; content:
 }
 
 function insertRule(content: string, pattern: PatternRecord): string {
-  const date = new Date().toISOString().split('T')[0];
+  const dateParts = new Date().toISOString().split('T');
+  const date: string = dateParts[0] || new Date().toISOString().slice(0, 10);
   const evidenceComment = buildEvidenceComment(pattern, date);
   const ruleText = buildRuleText(pattern);
 
