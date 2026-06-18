@@ -4,7 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/driftlens.svg)](https://badge.fury.io/js/driftlens)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests](https://github.com/driftlens/driftlens/actions/workflows/ci.yml/badge.svg)](https://github.com/driftlens/driftlens/actions)
+(https://github.com/driftlens/driftlens/actions)
 
 ---
 
