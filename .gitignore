@@ -1,0 +1,11 @@
+.driftlens/
+node_modules/
+dist/
+*.js.map
+.env
+.env.local
+coverage/
+docs/audit/
+docs/strategy/
+# Launch website (separate repo)
+DriftLens-LaunchWebsite/
